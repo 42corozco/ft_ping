@@ -12,7 +12,6 @@ SRC := \
 	srcs/main.c \
 	srcs/tools.c
 
-#OBJS = $(addprefix objs/, $(SRC:.cpp=.o))
 OBJS = $(addprefix objs/, $(SRC:.c=.o))
 #color
 COM_COLOR   = \033[0;34m
