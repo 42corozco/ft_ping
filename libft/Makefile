@@ -6,6 +6,8 @@ CFLAGS =
 
 SRC := \
 	srcs/ft_getopt.c \
+	srcs/ft_strchr.c \
+	srcs/ft_strlen.c \
 
 OBJS = $(addprefix objs/, $(SRC:.c=.o))
 

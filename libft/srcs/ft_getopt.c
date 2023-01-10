@@ -9,16 +9,6 @@ int		ft_optind = 1;
 int		ft_opterr = 1;
 int		ft_optopt = '?';
 
-static char * ft_strchr (const char *str, int chr)
-{
-	while (*str)
-	{
-		if (*str == chr)
-			return (char *) str;
-		str++;
-	}
-	return 0;
-}
 //optarg: si la option necesita un argumento
 //optind: index donde estamos en av
 //opterr: no lo se
