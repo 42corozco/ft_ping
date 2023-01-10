@@ -1,25 +1,25 @@
 #include "ft_ping.h"
 
-int	parsing_options(int ac, char **av)
+int		parsing_options(int ac, char **av)
 {
-	int c;
+	int	c;
 
 	c = 0;
-	while ((c = getopt (ac, av, "v:hv")) != -1)
+	while ((c = getopt (ac, av, "hvVa:")) != -1)
 	//while ((c = ft_getopt (ac, av, "vhV:ab")) != -1)
 	{
 		printf("[%c]\n", c);
 		printf ("optarg-[%s], optind-[%d], opterr-[%d], optopt-[%d]\n", optarg, optind, opterr, optopt);
 		switch (c) {
-		case 'h':
-			printf("h\n");
-			break;
 		case 'v':
-			printf("v\n");
+			printf("v\nn");
 			break;
+		case 'h':
+			print_usage();
+			return -1;
 		case 'V':
 			printf("ft_ping from azereje\n");
-			break;
+			exit (0);
 		default:
 			return -1;
 		}

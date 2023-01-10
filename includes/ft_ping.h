@@ -2,10 +2,11 @@
 # define FT_PING_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 #include "ft_error.h"
-#include "ft_getopt.h"
+//#include "ft_getopt.h"
 
 
 extern char *optarg;
@@ -19,5 +20,6 @@ typedef struct		s_options
 //	struct s_flags	*next;
 }					t_options;
 
-void	init(t_options *options);
+void	print_usage(void);
+
 #endif

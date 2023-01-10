@@ -12,7 +12,7 @@ int		ft_optopt = '?';
 //optarg: si la option necesita un argumento
 //optind: index donde estamos en av
 //opterr: no lo se
-//optopt: si error, no existe
+//optopt: si no hay error es igual a 0, si error, returna el ascii
 
 int ft_getopt(int argc, char * const argv[], const char *optstring)
 {
