@@ -4,12 +4,20 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "error.h"
-#include "tools.h"
+#include "ft_error.h"
+#include "ft_getopt.h"
+
 
 extern char *optarg;
-//extern char *ft_optarg;
 extern int optind, opterr, optopt;
-//extern int ft_optind, ft_opterr, ft_optopt;
 
+typedef struct		s_options
+{
+	int         flag_h;
+	int			flag_v;
+    int			flag_V;
+//	struct s_flags	*next;
+}					t_options;
+
+void	init(t_options *options);
 #endif

@@ -1,16 +1,13 @@
 NAME = ft_ping
-HEAD := -I./includes
+HEAD := -I./includes/ -I./libft/includes
 CP = gcc
 
 CFLAGS = 
 #CFLAGS = -Wall -Wextra -Werror
-#CFLAGS = -Wall -Wextra -Werror -std=c++98
 CFLAGSF = -g3 -fsanitize=address -Wall -Wextra -Werror
-#CFLAGSF = -g3 -fsanitize=address -Wall -Wextra -Werror -std=c++98
 
 SRC := \
 	srcs/main.c \
-	srcs/tools.c
 
 OBJS = $(addprefix objs/, $(SRC:.c=.o))
 #color
@@ -45,8 +42,9 @@ endef
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	@make -sC ./libft
 	@echo ''
-	@$(CP) $(CFLAGS) $(HEAD) $(OBJS) -o $(NAME)
+	@$(CP) $(CFLAGS) $(HEAD) $(OBJS) -o $(NAME) -L./libft -lft
 	@echo '	 '
 	@echo '	......( \_/ ) '
 	@echo '	......( o_o ) '
@@ -61,20 +59,23 @@ objs/%.o: %.c
 
 clean:
 	@rm -rf $(OBJS) objs
+	@make clean -sC libft
 	@printf "%b" "$(ERROR_COLOR)\tmake clean\t$(OK_COLOR)[SUCCESS]$(NO_COLOR)\n";
 
 fclean:
+	@make fclean -sC libft
 	@rm -rf $(NAME) $(OBJS) objs
 	@printf "%b" "$(ERROR_COLOR)\tmake fclean\t$(OK_COLOR)[SUCCESS]$(NO_COLOR)\n";
 
 re: fclean all
 
 cn: $(OBJS)
-	@$(CP) $(CFLAGS) $(HEAD) $(OBJS) -o $(NAME)
+	@make -sC ./libft
+	@$(CP) $(CFLAGS) $(HEAD) $(OBJS) -o $(NAME) -L./libft -lft
 	@echo 'simple ' "$(WARN_COLOR)\t $(NAME)\t$(OK_COLOR)[CREATED]$(NO_COLOR)";
 
 cs: $(OBJS)
-	@$(CP) $(CFLAGSF) $(HEAD) $(OBJS) -o $(NAME)
+	@$(CP) $(CFLAGSF) $(HEAD) $(OBJS) -o $(NAME) -L./libft -lft
 	@echo 'sanitize' "$(WARN_COLOR)\t $(NAME)\t$(OK_COLOR)[CREATED]$(NO_COLOR)";
 
 leaks:

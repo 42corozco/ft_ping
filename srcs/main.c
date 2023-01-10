@@ -5,13 +5,14 @@ int	parsing_options(int ac, char **av)
 	int c;
 
 	c = 0;
-	printf("globale -> [%d]", globale);
-	while ((c = getopt (ac, av, "vhV")) != -1)
+	while ((c = getopt (ac, av, "v:hv")) != -1)
+	//while ((c = ft_getopt (ac, av, "vhV:ab")) != -1)
 	{
 		printf("[%c]\n", c);
+		printf ("optarg-[%s], optind-[%d], opterr-[%d], optopt-[%d]\n", optarg, optind, opterr, optopt);
 		switch (c) {
 		case 'h':
-			printf("v\n");
+			printf("h\n");
 			break;
 		case 'v':
 			printf("v\n");
@@ -23,21 +24,31 @@ int	parsing_options(int ac, char **av)
 			return -1;
 		}
 	}
+	printf ("optarg-[%s], optind-[%d], opterr-[%d], optopt-[%d]\n", optarg, optind, opterr, optopt);
+
 	return (1);
+}
+void	init(t_options *options)
+{
+	options->flag_h = 0;
+	options->flag_h = 0;
+	options->flag_h = 0;
 }
 
 int	main(int ac, char **av)
 {
+	t_options options;
 	if (ac == 1)
 	{
 		fprintf(stderr, "%s", usageError);
 		return (1);
 	}
+	init(&options);
 	parsing_options(ac, av);
 	/*
 	   write (2, notKnownError[0], ft_strlen(notKnownError[0]));
 	   write (2, av[1], ft_strlen(av[1]));
 	   write (2, notKnownError[1], ft_strlen(notKnownError[1]));
-	   */
+	*/
 	return (0);
 }
